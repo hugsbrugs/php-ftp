@@ -398,7 +398,6 @@ class Ftp
             } 
             $d->close();
 
-            error_log($to_upload.'==='.$uploaded);
             if($to_upload===$uploaded)
             {
                 $uploaded_all = true;
@@ -435,7 +434,7 @@ class Ftp
             if(false !== $cid = Ftp::login($server, $user, $password, $port))
             {
                 # Download File
-                if (ftp_nb_get($cid, $local_file, $remote_file, FTP_BINARY, 0))
+                if (ftp_get($cid, $local_file, $remote_file, FTP_BINARY, 0))
                 {
                     $downloaded = true;
                 }
